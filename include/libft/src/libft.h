@@ -6,7 +6,7 @@
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 16:50:27 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/06/28 10:41:52 by lgaudin          ###   ########.fr       */
+/*   Updated: 2023/07/18 15:40:23 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stdarg.h>
+# include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -89,5 +90,23 @@ int					ft_print_percent(void);
 
 // Custom add-ons
 void				ft_free_tab(char **tab);
+int					ft_tab_len(char **tab);
+char				*ft_strnstr_rev(const char *big, const char *little,
+						size_t len);
+char				**ft_split_str(char const *s, char *token);
+char				**ft_split_str_once(char const *s, char *token);
+int					ft_strcmp(const char *s1, const char *s2);
+char				*ft_strndup(char *str, int n);
+char				*ft_get_bef_char(char *str, char c);
+char				*ft_get_aft_char(char *str, char c);
+char				*ft_get_bef_char_rev(char *str, char c);
+void				*ft_malloc_error(void);
+bool				ft_isspace(char c);
+char				*ft_strip_quotes(char *str);
+int					ft_strnstr_index(const char *big, const char *little,
+						size_t len);
+bool				is_between_parenthesis(char *str, int index);
+char				*strip_parenthesis(char *str);
+bool				exists_out_parenthesis(char *command, char *token);
 
 #endif

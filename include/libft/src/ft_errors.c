@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_tab.c                                      :+:      :+:    :+:   */
+/*   ft_errors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/28 10:25:16 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/07/18 15:01:51 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/07/16 16:48:16 by lgaudin           #+#    #+#             */
+/*   Updated: 2023/07/16 16:48:46 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_tab(char **tab)
+void	*ft_malloc_error(void)
 {
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
+	ft_putendl_fd("Memory allocation failed\n", STDERR_FILENO);
+	return (NULL);
 }

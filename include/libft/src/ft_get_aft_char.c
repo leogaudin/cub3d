@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_tab.c                                      :+:      :+:    :+:   */
+/*   ft_get_aft_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/28 10:25:16 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/07/18 15:01:51 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/07/09 14:13:14 by lgaudin           #+#    #+#             */
+/*   Updated: 2023/07/09 14:13:25 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_tab(char **tab)
+char	*ft_get_aft_char(char *str, char c)
 {
-	int	i;
+	int		i;
+	char	*new;
 
 	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
+	while (str[i] && str[i] != c)
+		i++;
+	if (str[i] == '\0')
+		return (NULL);
+	new = ft_strdup(str + i + 1);
+	return (new);
 }

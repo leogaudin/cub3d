@@ -1,48 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr_rev.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 11:12:48 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/07/17 20:01:21 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/07/01 14:25:07 by lgaudin           #+#    #+#             */
+/*   Updated: 2023/07/01 14:25:21 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr_rev(const char *big, const char *little, size_t len)
 {
 	int	i;
 	int	j;
 
 	if (little[0] == '\0' || (len == 0 && !big))
 		return ((char *)big);
-	i = 0;
-	while (big[i] != '\0' && (size_t)i < len)
+	i = ft_strlen(big) - 1;
+	while (big[i] != '\0' && (size_t)i >= 0)
 	{
 		j = 0;
 		while (little[j] != '\0' && (size_t)i + j < len)
 		{
 			if (big[i + j] == little[j])
+			{
 				j++;
+			}
 			else
 				break ;
 		}
 		if (little[j] == '\0')
+		{
 			return ((char *)big + i);
-		i++;
+		}
+		i--;
 	}
 	return (0);
 }
-
-// int	main(void)
-// {
-// 	char	first[] = "Bonjour";
-// 	char	second[] = "jour";
-// 	int		limit = 10;
-// 	printf("strstr returned %s\n", strnstr(first, second, limit));
-// 	printf("ft_strstr returned %s\n", ft_strnstr(first, second, limit));
-// 	return (0);
-// }

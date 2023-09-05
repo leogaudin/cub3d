@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_tab.c                                      :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/28 10:25:16 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/07/18 15:01:51 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/07/09 14:14:40 by lgaudin           #+#    #+#             */
+/*   Updated: 2023/07/09 14:15:20 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_tab(char **tab)
+char	*ft_strndup(char *str, int n)
 {
-	int	i;
+	int		i;
+	char	*new;
 
 	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
+	new = malloc(sizeof(char) * (n + 1));
+	if (!new)
+		return (NULL);
+	while (str[i] && i < n)
+	{
+		new[i] = str[i];
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
 }
