@@ -18,7 +18,7 @@ LIBFT = $(LIBFT_PATH)/libft.a
 
 MLX				= libmlx.dylib
 
-NAME = cub3d
+NAME = cub3D
 
 .PHONY: all clean fclean re
 
