@@ -6,7 +6,7 @@
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:35:43 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/09/05 16:34:03 by lgaudin          ###   ########.fr       */
+/*   Updated: 2023/09/06 11:41:37 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,37 +42,37 @@ static void	move_down(t_player *player, char **map)
 		player->pos.y -= player->dir.y * player->move_speed;
 }
 
-static void	move_right(t_player *player)
+static void	move_left(t_player *player)
 {
-	double	oldDirX;
-	double	oldPlaneX;
+	double	tmp_dir;
+	double	tmp_plane;
 
-	oldDirX = player->dir.x;
+	tmp_dir = player->dir.x;
 	player->dir.x = player->dir.x * cos(-player->rot_speed) - player->dir.y
 		* sin(-player->rot_speed);
-	player->dir.y = oldDirX * sin(-player->rot_speed) + player->dir.y
+	player->dir.y = tmp_dir * sin(-player->rot_speed) + player->dir.y
 		* cos(-player->rot_speed);
-	oldPlaneX = player->plane.x;
+	tmp_plane = player->plane.x;
 	player->plane.x = player->plane.x * cos(-player->rot_speed)
 		- player->plane.y * sin(-player->rot_speed);
-	player->plane.y = oldPlaneX * sin(-player->rot_speed) + player->plane.y
+	player->plane.y = tmp_plane * sin(-player->rot_speed) + player->plane.y
 		* cos(-player->rot_speed);
 }
 
-static void	move_left(t_player *player)
+static void	move_right(t_player *player)
 {
-	double	oldDirX;
-	double	oldPlaneX;
+	double	tmp_dir;
+	double	tmp_plane;
 
-	oldDirX = player->dir.x;
+	tmp_dir = player->dir.x;
 	player->dir.x = player->dir.x * cos(player->rot_speed) - player->dir.y
 		* sin(player->rot_speed);
-	player->dir.y = oldDirX * sin(player->rot_speed) + player->dir.y
+	player->dir.y = tmp_dir * sin(player->rot_speed) + player->dir.y
 		* cos(player->rot_speed);
-	oldPlaneX = player->plane.x;
+	tmp_plane = player->plane.x;
 	player->plane.x = player->plane.x * cos(player->rot_speed) - player->plane.y
 		* sin(player->rot_speed);
-	player->plane.y = oldPlaneX * sin(player->rot_speed) + player->plane.y
+	player->plane.y = tmp_plane * sin(player->rot_speed) + player->plane.y
 		* cos(player->rot_speed);
 }
 
