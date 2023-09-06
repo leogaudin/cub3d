@@ -6,7 +6,7 @@
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:17:40 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/09/05 16:29:29 by lgaudin          ###   ########.fr       */
+/*   Updated: 2023/09/06 11:32:42 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_raycast	*init_raycast(t_player *player, int x)
 	ray = malloc(sizeof(t_raycast));
 	if (!ray)
 		return (ft_malloc_error());
+	x = WIDTH - x;
 	ray->cameraX = 2 * x / (double)WIDTH - 1;
 	ray->dir.x = player->dir.x + player->plane.x * ray->cameraX;
 	ray->dir.y = player->dir.y + player->plane.y * ray->cameraX;
@@ -67,12 +68,20 @@ int	perform_dda(t_raycast *ray, char **map)
 			ray->side_dist.x += ray->delta_dist.x;
 			ray->map.x += ray->step.x;
 			ray->side = 0;
+			if (ray->step.x == 1)
+				ray->color = EAST;
+			else
+				ray->color = WEST;
 		}
 		else
 		{
 			ray->side_dist.y += ray->delta_dist.y;
 			ray->map.y += ray->step.y;
 			ray->side = 1;
+			if (ray->step.y == 1)
+				ray->color = SOUTH;
+			else
+				ray->color = NORTH;
 		}
 		if (map[ray->map.y][ray->map.x] != '0')
 			ray->hit = 1;

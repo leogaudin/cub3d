@@ -6,7 +6,7 @@
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 15:29:48 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/09/05 16:25:33 by lgaudin          ###   ########.fr       */
+/*   Updated: 2023/09/06 11:09:01 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 1280
+# define HEIGHT 720
 # define FOV 66
 
 # define SKY 0x87CEEB
@@ -107,8 +107,7 @@ typedef struct s_raycast
 	int			hit;
 	int			side;
 	int			line_height;
-	int			draw_start;
-	int			draw_end;
+	int			color;
 }				t_raycast;
 
 t_game			*init_game(void);
